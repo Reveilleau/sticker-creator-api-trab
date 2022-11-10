@@ -1,24 +1,22 @@
 package br.edu.unisep.albumcup.controller;
 
-import br.edu.unisep.albumcup.data.entity.Sticker;
-import br.edu.unisep.albumcup.data.repository.StickerRepository;
 import br.edu.unisep.albumcup.dto.CreateStickerDto;
+import br.edu.unisep.albumcup.dto.StickerDto;
 import br.edu.unisep.albumcup.usecase.CreateStickerUseCase;
+import br.edu.unisep.albumcup.usecase.FindAllStickersUseCase;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/sticker")
+@RequiredArgsConstructor
 public class StickerController {
 
-    private final StickerRepository repository;
     private final CreateStickerUseCase createStickerUseCase;
-
-    public StickerController(StickerRepository repo, CreateStickerUseCase createStickerUseCase) {
-        this.repository = repo;
-        this.createStickerUseCase = createStickerUseCase;
-    }
+    private final FindAllStickersUseCase findAllStickersUseCase;
 
     @PostMapping
     public void save(@RequestBody CreateStickerDto stickerData) {
@@ -26,7 +24,7 @@ public class StickerController {
     }
 
     @GetMapping
-    public List<Sticker> findAll() {
-        return repository.findAll();
+    public List<StickerDto> findAll() {
+        return findAllStickersUseCase.execute();
     }
 }
