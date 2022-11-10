@@ -2,23 +2,31 @@ package br.edu.unisep.albumcup.controller;
 
 import br.edu.unisep.albumcup.data.entity.Sticker;
 import br.edu.unisep.albumcup.data.repository.StickerRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import br.edu.unisep.albumcup.dto.CreateStickerDto;
+import br.edu.unisep.albumcup.usecase.CreateStickerUseCase;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/sticker")
 public class StickerController {
 
-    private StickerRepository repository;
+    private final StickerRepository repository;
+    private final CreateStickerUseCase createStickerUseCase;
 
-    public StickerController(StickerRepository repo) {
+    public StickerController(StickerRepository repo, CreateStickerUseCase createStickerUseCase) {
         this.repository = repo;
+        this.createStickerUseCase = createStickerUseCase;
     }
 
     @PostMapping
-    public void save(@RequestBody Sticker sticker) {
-        repository.save(sticker);
+    public void save(@RequestBody CreateStickerDto stickerData) {
+        createStickerUseCase.execute(stickerData);
+    }
+
+    @GetMapping
+    public List<Sticker> findAll() {
+        return repository.findAll();
     }
 }
