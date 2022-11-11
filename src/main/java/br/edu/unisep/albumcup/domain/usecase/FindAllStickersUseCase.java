@@ -1,6 +1,6 @@
-package br.edu.unisep.albumcup.usecase;
+package br.edu.unisep.albumcup.domain.usecase;
 
-import br.edu.unisep.albumcup.dto.StickerDto;
+import br.edu.unisep.albumcup.domain.dto.StickerDto;
 
 import java.util.List;
 

@@ -1,12 +1,11 @@
-package br.edu.unisep.albumcup.dto;
+package br.edu.unisep.albumcup.domain.dto;
 
 import lombok.Data;
 
 import java.time.LocalDate;
 
 @Data
-public class StickerDto {
-    private Integer id;
+public class CreateStickerDto {
     private String player;
     private String country;
 
