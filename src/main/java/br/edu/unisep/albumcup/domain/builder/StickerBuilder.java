@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+
 public interface StickerBuilder {
     Sticker build(CreateStickerDto dto);
     StickerDto build(Sticker sticker);

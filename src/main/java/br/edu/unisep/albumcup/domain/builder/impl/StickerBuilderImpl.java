@@ -4,9 +4,11 @@ import br.edu.unisep.albumcup.data.entity.Sticker;
 import br.edu.unisep.albumcup.domain.builder.StickerBuilder;
 import br.edu.unisep.albumcup.domain.dto.CreateStickerDto;
 import br.edu.unisep.albumcup.domain.dto.StickerDto;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class StickerBuilderImpl implements StickerBuilder {
     @Override
     public Sticker build(CreateStickerDto stickerData) {
